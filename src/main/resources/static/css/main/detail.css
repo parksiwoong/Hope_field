@@ -1,0 +1,52 @@
+
+
+.container {
+
+
+    display: grid;
+    grid-template-columns: 20% 1fr;
+    grid-template-rows:60% 1fr 30%;
+    border: 1px solid #e8e8e8;
+
+    grid-gap: 20px;
+    height: 100%;
+    grid-template-areas:
+        "side bonlon"
+        "side detcle"
+        "side deam";
+}
+
+.side {
+    grid-area: side;
+}
+
+.daem {
+    grid-area: daem;
+}
+
+.bonlon {
+    grid-area: bonlon;
+}
+
+.detcle {
+    grid-area: detcle;
+}
+
+@media all and (max-width: 800px) {
+    .container {
+        background-color: #263343;
+        display: grid;
+        grid-template-columns: 20% 1fr;
+        grid-template-rows:60% 1fr 30%;
+        border: 1px solid #e8e8e8;
+
+        grid-gap: 20px;
+        height: 100%;
+        grid-template-areas:
+"side"
+"bonlon"
+"detcle"
+"deam";
+    }
+}
+

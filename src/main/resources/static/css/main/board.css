@@ -1,0 +1,28 @@
+
+@media (min-width: 1200px){
+    #contents .article {
+        line-height: 1.6em !important;
+    }
+}
+/**************write***********************/
+
+.another_category {
+    border: 1px solid #E5E5E5;
+    padding: 10px 10px 5px;
+    margin: 10px 0;
+    clear: both;
+}
+.another_category_color_gray, .another_category_color_gray h4 {
+    border-color: #E5E5E5 !important;
+}
+.another_category {
+    border: 1px solid #E5E5E5;
+    padding: 10px 10px 5px;
+    margin: 10px 0;
+    clear: both;
+}
+#contents .article .another_category {
+    font: 15px 'NanumGothic', sans-serif;
+}
+
+/*************************************/
