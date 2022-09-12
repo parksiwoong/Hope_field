@@ -1,5 +1,6 @@
 package dev.a.a01.user.impl;
 
+import com.sun.org.apache.bcel.internal.util.BCELComparator;
 import dev.a.a01.user.MemberService;
 import dev.a.a01.user.MemberVo;
 import dev.a.a01.user.mappers.MemberDao;
@@ -22,5 +23,12 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public List<HashMap> test(MemberVo vo) throws Exception {
         return dao.test(vo);
+    }
+
+    @Override
+    public HashMap loignIdCheck() throws Exception {
+        HashMap user = dao.loginIdCheck(); //아이디 체크
+        HashMap result = new HashMap();
+        return result;
     }
 }

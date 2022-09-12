@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import java.lang.reflect.Member;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +23,7 @@ public class MemberController {
      * @param vo
      * */
     @RequestMapping("/user")
-    public ModelAndView members(Map map, MemberVo vo) throws Exception {
+    public ModelAndView _members(Map map, MemberVo vo) throws Exception {
         ModelAndView mv = new ModelAndView();
         System.out.println("=====> @ Controller");
         mv.addObject(service.test(vo));
@@ -30,10 +31,21 @@ public class MemberController {
         return mv;
     }
 
-    public HashMap _member(ModelMap mv, MemberVo vo)throws Exception{
-        HashMap map = new HashMap(); // 나중에 담을 service
+    public HashMap _login(ModelMap mv, MemberVo vo)throws Exception{
+        HashMap map = service.loignIdCheck();
+    return map;
+    }
+    @RequestMapping("/memberGetInsert")
+    public String _memberGetInsert(){
+        return "/dev/a/a01/memberInsert";
+    }
+    @RequestMapping("/memberInsert")
+    public ModelAndView _memberInsert(MemberVo vo, String id){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("/dev/a/a01/memberInsert");
 
-
-        return map;
+        //없으면 다른 상수
+        //아이디 중복
+        return mav;
     }
 }

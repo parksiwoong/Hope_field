@@ -9,4 +9,6 @@ import java.util.List;
 @Mapper
 public interface MemberDao {
     List<HashMap> test (MemberVo vo)throws Exception;
+
+    HashMap loginIdCheck()throws Exception;
 }

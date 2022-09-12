@@ -5,4 +5,7 @@
     <select id="test" resultType="MemberVo">
         SELECT  * FROM public.tb_cmmn_bbs
     </select>
+    <select id="loginIdCheck" resultType="HashMap"> /* 아이디 체크 */
+        SELECT * FROM PUBLIC.TEST
+    </select>
 </mapper>
