@@ -9,4 +9,6 @@ public interface MemberService {
     List<HashMap> test (MemberVo vo)throws Exception;
 
     HashMap loignIdCheck()throws Exception;
+
+    HashMap memberSetInsert(MemberVo vo)throws Exception;
 }

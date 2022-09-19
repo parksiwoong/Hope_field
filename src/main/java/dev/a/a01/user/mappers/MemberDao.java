@@ -11,4 +11,6 @@ public interface MemberDao {
     List<HashMap> test (MemberVo vo)throws Exception;
 
     HashMap loginIdCheck()throws Exception;
+
+    HashMap MemberSetInsert(MemberVo vo)throws Exception;
 }

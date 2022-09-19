@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.a.a01.userJoin.mappers.UserJoinDao">
+    <select id="test" resultType="UserJoinVo">
+        SELECT COUNT(1)
+        FROM USER_INFO
+        WHERE REPLACE() = REPLACE(#{}, ' ', '')
+    </select>
+    <select id="loginIdCheck" resultType="HashMap"> /* 아이디 체크 */
+        SELECT * FROM PUBLIC.TEST
+    </select>
+</mapper>

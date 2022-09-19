@@ -31,4 +31,9 @@ public class MemberServiceImpl implements MemberService {
         HashMap result = new HashMap();
         return result;
     }
+
+    @Override
+    public HashMap memberSetInsert(MemberVo vo) throws Exception {
+        return dao.MemberSetInsert(vo);
+    }
 }

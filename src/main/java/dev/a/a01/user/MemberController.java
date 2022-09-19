@@ -35,17 +35,5 @@ public class MemberController {
         HashMap map = service.loignIdCheck();
     return map;
     }
-    @RequestMapping("/memberGetInsert")
-    public String _memberGetInsert(){
-        return "/dev/a/a01/memberInsert";
-    }
-    @RequestMapping("/memberInsert")
-    public ModelAndView _memberInsert(MemberVo vo, String id){
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("/dev/a/a01/memberInsert");
 
-        //없으면 다른 상수
-        //아이디 중복
-        return mav;
-    }
 }
