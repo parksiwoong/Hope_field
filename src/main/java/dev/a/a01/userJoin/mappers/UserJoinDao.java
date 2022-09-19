@@ -8,7 +8,5 @@ import java.util.List;
 
 @Mapper
 public interface UserJoinDao {
-    List<UserJoinVo> userJoinDao();
-
     int checkDuplicationUserId(UserJoinVo vo)throws SQLException;
 }

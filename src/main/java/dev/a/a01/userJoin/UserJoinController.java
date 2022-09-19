@@ -11,6 +11,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("/userJoin")
@@ -21,25 +25,28 @@ public class UserJoinController {
 
     @RequestMapping("/memberGetInsert")
     public String _userGetJoin(){
-        return "/dev/a/a01/memberInsert";
+        return "/dev/a/a01/userJoin";
     }
 
     /** 아이디 중복체크 */
-    @RequestMapping("/checkDuplication")
     @ResponseBody
-    public ModelAndView _checkDuplication(UserJoinVo vo, ModelMap amp)throws SQLException {
+    @RequestMapping("/checkDuplication")
+    public HashMap<String,Object> _checkDuplication(UserJoinVo vo, ModelMap map)throws SQLException {
+        HashMap<String, Object> hm = new HashMap<String, Object>();
         int result = service.checkDuplicationUserId(vo);
-        return new ModelAndView("test");
+         map.addAttribute("result",result);
+        hm.put("result",result);
+        return hm;
     }
 
-    @RequestMapping("/memberSetInsert")
-    public ModelAndView _userJoinSave(UserJoinVo vo, String id) throws Exception {
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("/dev/a/a01/memberInsert");
-        mav.addObject(service.userJoinService(vo));
-        //없으면 다른 상수
-        //아이디 중복
-        return mav;
-    }
+//    @RequestMapping("/memberSetInsert")
+//    public ModelAndView _userJoinSave(UserJoinVo vo, String id) throws Exception {
+//        ModelAndView mav = new ModelAndView();
+//        mav.setViewName("/dev/a/a01/memberInsert");
+//        mav.addObject(service.userJoinService(vo));
+//        //없으면 다른 상수
+//        //아이디 중복
+//        return mav;
+//    }
 }
 

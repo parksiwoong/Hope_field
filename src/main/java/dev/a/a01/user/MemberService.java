@@ -10,5 +10,5 @@ public interface MemberService {
 
     HashMap loignIdCheck()throws Exception;
 
-    HashMap memberSetInsert(MemberVo vo)throws Exception;
+ //   HashMap memberSetInsert(MemberVo vo)throws Exception;
 }

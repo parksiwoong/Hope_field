@@ -5,6 +5,7 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script>
 <%--    <script src="../js/dev/a/a01/member.js"/>--%>
     <script type="text/javascript" src="/js/dev/a/a01/member.js"></script>
+    <script type="text/javascript" src="/js/dev/common/common.js"></script>
 </head>
       <body>
             <form method="POST" action="/member/memberInsert">

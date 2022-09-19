@@ -22,10 +22,10 @@ public class UserJoinServiceImpl {
     public UserJoinServiceImpl(UserJoinDao dao){
         this.dao = dao;
     }
-    public List<UserJoinVo> userJoinService(UserJoinVo vo) {
-
-        return dao.userJoinDao();
-    }
+//    public List<UserJoinVo> userJoinService(UserJoinVo vo) {
+//
+//        return dao.userJoinDao();
+//    }
 
     public int checkDuplicationUserId(UserJoinVo vo) throws SQLException {
         return dao.checkDuplicationUserId(vo);

@@ -6,5 +6,5 @@ import org.apache.ibatis.type.Alias;
 @Data
 @Alias("UserJoinVo")
 public class UserJoinVo {
-
+    private String userId;
 }

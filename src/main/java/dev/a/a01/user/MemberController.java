@@ -31,6 +31,7 @@ public class MemberController {
         return mv;
     }
 
+    @RequestMapping("/loginTsetzx")
     public HashMap _login(ModelMap mv, MemberVo vo)throws Exception{
         HashMap map = service.loignIdCheck();
     return map;
