@@ -7,4 +7,27 @@
         FROM PUBLIC.TB_USER_INFO
         WHERE REPLACE(USER_ID,' ','') = REPLACE(#{userId}, ' ', '')
     </select>
+
+
+    <!-- ID중복체크2 -->
+    <select id="userJoinSave" parameterType="UserJoinVo" resultType="HashMap">
+        /*JoinDao.findUserSn*/
+        SELECT T1.AL_USER_SN
+        FROM TB_USER_INFO T1
+        WHERE T1.USE_YN = 'Y'
+          AND T1.CI = #{CI}
+        ORDER BY T1.USER_SN
+            LIMIT 1
+    </select>
+    <!-- ID중복체크2 -->
+    <select id="findUserSn" parameterType="UserJoinVo" resultType="HashMap">
+        /*JoinDao.findUserSn*/
+        SELECT T1.AL_USER_SN
+        FROM TB_USER_INFO T1
+        WHERE T1.USE_YN = 'Y'
+          AND T1.CI = #{CI}
+        ORDER BY T1.USER_SN
+        LIMIT 1
+    </select>
+
 </mapper>

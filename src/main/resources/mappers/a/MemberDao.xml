@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dev.a.a01.user.mappers.MemberDao">
-    <select id="test" resultType="MemberVo">
+<mapper namespace="dev.a.a01.userMember.mappers.MemberDao">
+    <select id="test" resultType="dev.a.a01.userMember.MemberVo">
         SELECT  * FROM public.tb_cmmn_bbs
     </select>
-    <select id="loginIdCheck" resultType="HashMap"> /* 아이디 체크 */
-        SELECT * FROM public.tb_cmmn_bbs
-    </select>
+
 </mapper>

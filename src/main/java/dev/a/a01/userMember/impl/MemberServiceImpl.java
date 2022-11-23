@@ -1,9 +1,8 @@
-package dev.a.a01.user.impl;
+package dev.a.a01.userMember.impl;
 
-import com.sun.org.apache.bcel.internal.util.BCELComparator;
-import dev.a.a01.user.MemberService;
-import dev.a.a01.user.MemberVo;
-import dev.a.a01.user.mappers.MemberDao;
+import dev.a.a01.userMember.MemberService;
+import dev.a.a01.userMember.MemberVo;
+import dev.a.a01.userMember.mappers.MemberDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,11 +25,16 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    public HashMap<String, String> loginCheckCompare(MemberVo vo) {
+        return null;
+    }
+
+   /* @Override
     public HashMap loignIdCheck() throws Exception {
         HashMap user = dao.loginIdCheck(); //아이디 체크
         HashMap result = new HashMap();
         return result;
-    }
+    }*/
 
 //    @Override
 //    public HashMap memberSetInsert(MemberVo vo) throws Exception {

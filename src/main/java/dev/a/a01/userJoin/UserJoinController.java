@@ -1,20 +1,28 @@
 package dev.a.a01.userJoin;
 
-import dev.a.a01.user.MemberVo;
 import dev.a.a01.userJoin.impl.UserJoinServiceImpl;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+
+/**
+ * 회원 가입/탈퇴 관련
+ *
+ * */
 
 @Controller
 @RequestMapping("/userJoin")
@@ -28,6 +36,11 @@ public class UserJoinController {
         return "/dev/a/a01/userJoin";
     }
 
+    @RequestMapping("/memberGetInsert_2")
+    public String _userGetJoin_2(){
+        return "/dev/a/a01/userJoin_2";
+    }
+
     /** 아이디 중복체크 */
     @ResponseBody
     @RequestMapping("/checkDuplication")
@@ -39,14 +52,18 @@ public class UserJoinController {
         return hm;
     }
 
-//    @RequestMapping("/memberSetInsert")
-//    public ModelAndView _userJoinSave(UserJoinVo vo, String id) throws Exception {
-//        ModelAndView mav = new ModelAndView();
-//        mav.setViewName("/dev/a/a01/memberInsert");
-//        mav.addObject(service.userJoinService(vo));
-//        //없으면 다른 상수
-//        //아이디 중복
-//        return mav;
-//    }
+    /** 가입 완료 */
+    @RequestMapping("/memberSave")
+    public ModelAndView _userJoinSave(HttpServletRequest request, RedirectAttributes redirct, UserJoinVo vo, HttpSession session) throws Exception {
+        int resultCnt = 1;
+
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("/dev/a/a01/memberInsert");
+
+        session.setAttribute("alUserSn",service.userJoinSave(vo));
+        mav.addObject(session);
+        redirct.addAttribute("result", resultCnt);
+        return mav;
+    }
 }
 

@@ -4,4 +4,6 @@ import java.sql.SQLException;
 
 public interface UserJoinService {
     int checkDuplicationUserId(UserJoinVo vo)throws SQLException;
+
+    int userJoinSave (UserJoinVo vo)throws  SQLException;
 }
