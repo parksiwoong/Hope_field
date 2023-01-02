@@ -1,87 +1,258 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
-    <head>
-        <title>회원가입</title>
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <script type="text/javascript" src="/js/dev/a/a01/member.js"></script>
-        <script type="text/javascript" src="/js/dev/common/common.js"></script>
-        <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script> <%--다음주소검색--%>
-    </head>
-    <body>
-<%--        <form method="post" action="/member/memberInsert">--%>
-        <form id="joinForm" name="joinForm">
-            <input type="hidden" id="duplicationYn" name="duplicationYn" value="Y"/> <!-- 아이디 중혹확인 성공여부저장-->
-            <!-- 아이디 -->
-            <div class="form-group">
-                  <label for="userId">아이디</label>
-                  <input type="text" class="form-control" id="userId" name="userId" placeholder="ID" required>
-                  <div class="check_font" id="id_check"></div>
-                <button type="button" id="idChack">중복확인</button>
-            </div>
-            <!-- 비밀번호 -->
-            <div class="form-group">
-                  <label for="userPw">비밀번호</label>
-                  <input type="password" class="form-control" id="userPw" name="userPw" placeholder="PASSWORD" required>
-                  <div class="check_font" id="pw_check"></div>
-            </div>
-            <!-- 비밀번호 재확인 -->
-            <div class="form-group">
-                  <label for="userPw_re">비밀번호 확인</label>
-                  <input type="password" class="form-control" id="userPw_re" name="userPw_re" placeholder="Confirm Password" required>
-                  <div class="check_font" id="pw2_check"></div>
-            </div>
-            <!-- 이름 -->
-            <div class="form-group">
-                  <label for="userName">이름</label>
-                  <input type="text" class="form-control" id="userName" name="userName" placeholder="Name" required>
-                  <div class="check_font" id="name_check"></div>
-            </div>
-            <!-- 생년월일 -->
-            <div class="form-group required">
-                  <label for="userBirth">생년월일</label>
-                  <input type="text" class="form-control" id="userBirth" name="userBirth" placeholder="ex) 19990415" required>
-                  <div class="check_font" id="birth_check"></div>
-            </div>
-            <!-- 본인확인 이메일 -->
-            <div class="form-group">
-                  <label for="userEmail">이메일</label>
-                  <input type="text" class="form-control" name="userEmail" id="userEmail" placeholder="E-mail" required>
-                  <!-- <input type="text" style="margin-top: 5px;"class="email_form" name="email_confirm" id="email_confirm" placeholder="인증번호를 입력해주세요!" required>
-                      <button type="button" class="btn btn-outline-danger btn-sm px-3" onclick="confirm_email()">
-                          <i class="fa fa-envelope"></i>&nbsp;인증
-                      </button>&nbsp;
-                      <button type="button" class="btn btn-outline-info btn-sm px-3">
-                          <i class="fa fa-envelope"></i>&nbsp;확인
-                      </button>&nbsp; -->
-                <div class="check_font" id="email_check"></div>
-            </div>
-            <!-- 휴대전화 -->
-            <div class="form-group">
-                  <label for="userMpno">휴대전화 ('-' 없이 번호만 입력해주세요)</label>
-                  <input type="text" class="form-control" id="userMpno" name="userMpno" placeholder="Phone Number" required>
-                  <div class="check_font" id="phone_check"></div>
-            </div>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet"  href="${pageContext.request.contextPath}/css/a/SignIn.css">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
 
-                <label for="realAddr">주민등록등본의 현 주소</label>
-                <input type="text" id="realAddr" name="realAddr" placeholder="" readonly onclick="addSearch('real');" value="${data.realAddr}" required/>
-                <button type="button" onclick="addSearch('real');">주소 검색</button>
-                <div id="real" style="display: none; border: 1px solid; width: 100%; height:300px; margin: 5px 0; position: relative">
-                    <img src="https://t1.daumcdn.net/postcode/resource/images/close.png"
-                    style="cursor:pointer;position: absolute; right:0px; top:-1px; z-index:1"
-                     onclick="fn_foldRealPostcode('real')" alt="접기 버튼">
+            <script src="http://code.jquery.com/jquery-latest.js"></script>
+            <script type="text/javascript" src="${pageContext.request.contextPath}/js/dev/a/a01/member.js"></script>
+            <script type="text/javascript" src="${pageContext.request.contextPath}/js/dev/common/common.js"></script>
+            <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+            <script type="text/javascript" src="${pageContext.request.contextPath}/js/dev/a/a01/SignIn.js"></script>
+            <script type="text/javascript" src="${pageContext.request.contextPath}/js/dev/common/custom.js"></script>
+            <!--jqeury라이브러리-->
+
+            <title>Sign in</title>
+        </head>
+        <body>
+            <header class="clearfix">
+                <div class="title">
+                    <h1><a href="${pageContext.request.contextPath}/index">Hope<br>Field</a></h1>
                 </div>
-                <label for="realAddrDtl">상세주소</label>
-                <input type="text" id="realAddrDtl" name="realAddDtl" placeholder="상세주소를 입력해주세요" value="${data.realAddDtl}"  required/>
-                <input type="hidden" id="realCode" name="realCode">
-            </div>
-        </form>
-        <div class="reg_button">
-            <a class="btn btn-danger px-3" href="${pageContext.request.contextPath}">
-                <i class="fa fa-rotate-right pr-2" aria-hidden="true"></i>취소하기
+                <div class="top-menu">
+                    <ul>
+                        <li><a href="${pageContext.request.contextPath}/member/userLogin">Login</a></li>
+                        <li><a href="${pageContext.request.contextPath}/userJoin/memberGetInsert">Sign in</a></li>
+                        <li><a href="#">My page</a></li>
+                    </ul>
+                </div>
+                <ul class="gnb">
+                    <li>
+                        <a href="#">후원하기</a>
+                        <ul class="sub">
+                            <li><a href="#">정기후원</a></li>
+                            <li><a href="#">일시후원</a></li>
+                            <li><a href="#">국내후원</a></li>
+                            <li><a href="#">해외후원</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">스토리</a>
+                        <ul class="sub">
+                            <li><a href="#">나눔후기</a></li>
+                            <li><a href="#">결과보고</a></li>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">뉴스레터</a></li>
+                            <li><a href="#">스토리</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">기관소개</a>
+                        <ul class="sub">
+                            <li><a href="#">희망밭소개</a></li>
+                            <li><a href="#">걸어온길</a></li>
+                            <li><a href="#">CI 및 슬로건</a></li>
+                            <li><a href="#">투명경영</a></li>
+                            <li><a href="#">오시는길</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">사업안내</a>
+                        <ul class="sub">
+                            <li><a href="#">국내사업</a></li>
+                            <li><a href="#">국제사업</a></li>
+                            <li><a href="#">아동권리</a></li>
+                            <li><a href="#">사회적경제사업</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">나의후원</a>
+                        <ul class="sub">
+                            <li><a href="#">나의후원정보</a></li>
+                            <li><a href="#">온라인출력</a></li>
+                            <li><a href="#">나의 문의함</a></li>
+                            <li><a href="#">개인정보확인/변경</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </header>
+            <section>
+                <div class="wrap">
+                    <div class="container">
+                        <div class="title">
+                            <h2>회원가입</h2>
+                        </div>
+                            <p class="required"><img src="${pageContext.request.contextPath}/img/ico_required.gif" alt="필수">필수입력사항 </p>
 
-            </a>
-            <button type="button" id="btnNext">가입하기</button>
-        </div>
-      </body>
-</html>
+                    </div>
+                    <colgroup>
+                        <col style="width: 150px;">
+                        <col style="width: auto;">
+                    </colgroup>
+                    <form id="joinForm" name="joinForm">
+                        <tbody>
+                            <div class="table-type">
+                                <table >
+                                    <colgroup class>
+                                        <col style="width:150px;">
+                                        <col style="width:auto;">
+                                    </colgroup>
+                                    <tr>
+                                        <th class="row">아이디
+                                            <img src="${pageContext.request.contextPath}/img/ico_required.gif" alt="필수">
+                                        </th>
+                                        <td>
+                                            <input type="text"  id="userId" name="userId" class="member_id" placeholder="ID">
+                                            <a href="#" class="idBtn" id="idChack">중복확인</a>
+                                            <span class="idMsg">(영문소문자/숫자, 4~16자)</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="row">비밀번호
+                                            <img src="${pageContext.request.contextPath}/img/ico_required.gif" alt="필수">
+                                        </th>
+                                        <td>
+                                            <input type="password" name="userPwd" class="password" placeholder="Password">
+                                            <span class="idMsg">(영문 대소문자/숫자 4자~16자)</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="row">
+                                            비밀번호 확인
+                                            <img src="${pageContext.request.contextPath}/img/ico_required.gif"alt="필수">
+                                        </th>
+                                        <td>
+                                            <input type="password" name="userPwd2" class="user_passwd_confirm" placeholder="Confirm Password">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="row">이름
+                                            <img src="${pageContext.request.contextPath}/img/ico_required.gif" alt="필수">
+                                        </th>
+                                        <td>
+                                            <input type="text" name="userNm" class="name" placeholder="Name">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="row">주소
+                                            <img src="${pageContext.request.contextPath}/img/ico_required.gif" alt="필수">
+                                        </th>
+                                        <td>
+                                            <%--주소팝업--%>
+    <%--                                        <div id="real" style="display: none; border: 1px solid; width: 100%; height:300px; margin: 5px 0; position: relative">--%>
+    <%--                                            <img src="https://t1.daumcdn.net/postcode/resource/images/close.png"--%>
+    <%--                                                 style="cursor:pointer;position: absolute; right:0px; top:-1px; z-index:1"--%>
+    <%--                                                 onclick="fn_foldRealPostcode('real')" alt="접기 버튼">--%>
+    <%--                                        </div>--%>
+                                            <input type="text" id="postCode" onclick="daumPostcode()" placeholder="예)12345" value="${data.realAddr}">
+                                            <input type="button"class="postBtn"  onclick="daumPostcode()"  value="우편번호"><br>
+                                            <input type="text" id="realAddr" name="realAddr"  class="addr1" value="${data.realAddr}"> 기본주소<br>
+                                            <input type="text" id="realAddrDtl" name="realAddrDtl"  class="addr2" value="${data.realAddDtl}"> 나머지주소 (선택입력가능)
+                                            <input type="hidden" id="realCode" name="realCode">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">일반전화</th>
+                                        <td>
+                                            <select class="phone1" name="phone[]">
+                                                <option value="02">02</option>
+                                                <option value="031">031</option>
+                                                <option value="032">032</option>
+                                                <option value="033">033</option>
+                                                <option value="041">041</option>
+                                                <option value="042">042</option>
+                                                <option value="043">043</option>
+                                                <option value="044">044</option>
+                                                <option value="051">051</option>
+                                                <option value="052">052</option>
+                                                <option value="053">053</option>
+                                                <option value="054">054</option>
+                                                <option value="055">055</option>
+                                                <option value="061">061</option>
+                                                <option value="062">062</option>
+                                                <option value="063">063</option>
+                                                <option value="064">064</option>
+                                                <option value="0502">0502</option>
+                                                <option value="0503">0503</option>
+                                                <option value="0504">0504</option>
+                                                <option value="0505">0505</option>
+                                                <option value="0506">0506</option>
+                                                <option value="0507">0507</option>
+                                                <option value="070">070</option>
+                                                <option value="010">010</option>
+                                                <option value="011">011</option>
+                                                <option value="016">016</option>
+                                                <option value="017">017</option>
+                                                <option value="018">018</option>
+                                                <option value="019">019</option>
+                                                <option value="0508">0508</option>
+                                            </select>
+                                            <input class="phone2" name="phone[]" type="text"/>
+                                            <input class="phone3" name="phone[]" type="text"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">휴대전화</th>
+                                        <td>
+<%--                                            <button onclick="fn_checkPhone()">확인</button>--%>
+                                            <select class="mobile1" name="mobile[]" id="mobile1">
+                                                <option value="010">010</option>인
+                                                <option value="011">011</option>
+                                                <option value="016">016</option>
+                                                <option value="017">017</option>
+                                                <option value="018">018</option>
+                                                <option value="019">019</option>
+                                            </select>-
+                                            <input class="mobile2" name="mobile[]" type="text" id="mobile2"/>-
+                                            <input class="mobile3" name="mobile[]" type="text" id="mobile3"/>
+                                            <input type="hidden" id="userMpno">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">SMS 수신여부
+                                            <img src="${pageContext.request.contextPath}/img/ico_required.gif"
+                                                 alt="필수">
+                                        </th>
+                                        <td><input class="is_sms" name="is_sms" value="T" type="checkbox"/>
+                                            <label for=is_sms>동의함</label>
+                                            <p>해당사이트에서 제공하는 유익한 이벤트 소식을 SMS로 받으실 수 있습니다.</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">이메일
+                                            <img src="${pageContext.request.contextPath}/img/ico_required.gif"
+                                                 alt="필수">
+                                        </th>
+                                        <td><input class="email1" name="email1" type="text"/>
+                                            <span class="emailMsg"></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="displaynone">
+                                        <th scope="row">이메일 수신여부
+                                            <img src="${pageContext.request.contextPath}/img/ico_required.gif"
+                                                 alt="필수"/>
+                                        </th>
+                                        <td><input name="is_news_mail" class="ec-base-chk" value="T" type="checkbox"/>
+                                            <label for=is_news_mail0>동의함</label>
+                                            <p>해당사이트에서 제공하는 유익한 이벤트 소식을 이메일로 받으실 수 있습니다.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </tbody>
+                    </form>
+                    <div class="bottom-button">
+                        <button type="submit" class="join">회원가입</button>
+                        <button type="submit" class="cancel">회원가입 취소</button>
+                    </div>
+                </div>
+            </section>
+        </body>
+    </html>

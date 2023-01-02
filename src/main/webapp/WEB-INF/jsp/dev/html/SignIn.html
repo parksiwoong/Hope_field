@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--jqeury라이브러리-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/SignIn.css">
+  <script src="js/SignIn.js"></script>
+  <title>Sign in</title>
+</head>
+<body>
+  <header class="clearfix">
+    <div class="title">
+      <h1>Hope<br>
+      Field</h1>
+    </div>
+    <div class="top-menu">
+      <ul>
+        <li><a href="login.html" target="_blank">Login</a></li>
+        <li><a href="SignIn.html" target="_blank">Sign in</a></li>
+        <li><a href="#">My page</a></li>
+      </ul>
+    </div>
+    <ul class="gnb">
+      <li>
+        <a href="#">후원하기</a>
+        <ul class="sub">
+          <li><a href="sponsorship.html" target="_blank">정기후원</a></li>
+          <li><a href="sponsorship.html" target="_blank">일시후원</a></li>
+          <li><a href="#">국내후원</a></li>
+          <li><a href="#">해외후원</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">스토리</a>
+        <ul class="sub">
+          <li><a href="#">나눔후기</a></li>
+          <li><a href="#">결과보고</a></li>
+          <li><a href="#">공지사항</a></li>
+          <li><a href="#">뉴스레터</a></li>
+          <li><a href="#">스토리</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">기관소개</a>
+        <ul class="sub">
+          <li><a href="#">희망밭소개</a></li>
+          <li><a href="#">걸어온길</a></li>
+          <li><a href="#">CI 및 슬로건</a></li>
+          <li><a href="#">투명경영</a></li>
+          <li><a href="#">오시는길</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">사업안내</a>
+        <ul class="sub">
+          <li><a href="#">국내사업</a></li>
+          <li><a href="#">국제사업</a></li>
+          <li><a href="#">아동권리</a></li>
+          <li><a href="#">사회적경제사업</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">나의후원</a>
+        <ul class="sub">
+          <li><a href="#">나의후원정보</a></li>
+          <li><a href="#">온라인출력</a></li>
+          <li><a href="#">나의 문의함</a></li>
+          <li><a href="#">개인정보확인/변경</a></li>
+        </ul>
+      </li>
+    </ul>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <div class="container">
+        <div class="title">
+          <h2>회원가입</h2>
+        </div>
+        <form class="joinForm" action="">
+          <p class="required"><img src="img/ico_required.gif" alt="필수">필수입력사항</p>
+        </form>
+      </div>
+        <colgroup>
+          <col style="width: 150px;">
+          <col style="width: auto;">
+        </colgroup>
+
+        <tbody>
+          <div class="table-type">
+            <table>
+              <colgroup>
+                <col style="width:150px;">
+                <col style="width:auto;">
+              </colgroup>
+              <tr>
+                <th class="row">아이디
+                  <img src="img/ico_required.gif" alt="필수">
+                </th>
+                <td>
+                  <input type="text" name="member_id" class="member_id" placeholder="ID">
+                  <a href="#" class="idBtn">중복확인</a>
+                  <span class="idMsg">(영문소문자/숫자, 4~16자)</span>
+                </td>
+              </tr>
+              <tr>
+                <th class="row">비밀번호
+                  <img src="img/ico_required.gif" alt="필수">
+                </th>
+                <td>
+                  <input type="password" name="password" class="password" placeholder="Password">
+                  <span class="idMsg">(영문 대소문자/숫자 4자~16자)</span>
+                </td>
+              </tr>
+              <tr>
+                <th class="row">비밀번호 확인
+                  <img src="img/ico_required.gif" alt="필수">
+                </th>
+                <td>
+                  <input type="password" name="user_passwd_confirm" class="user_passwd_confirm" placeholder="Confirm Password">
+                </td>
+              </tr>
+              <tr>
+                <th class="row">이름
+                  <img src="img/ico_required.gif" alt="필수">
+                </th>
+                <td>
+                  <input type="text" name="name" class="name" placeholder="Name">
+                </td>
+              </tr>
+              <tr>
+                <th class="row">주소
+                  <img src="img/ico_required.gif" alt="필수">
+                </th>
+                <td>
+                  <input type="text" name="postcode1" class="postcode1" placeholder="">
+                  <a href="#" class="postBtn">우편번호</a><br>
+                  <input type="text" class="addr1">  기본주소<br>
+                  <input type="text" class="addr2">  나머지주소 (선택입력가능)             
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">일반전화</th>
+                  <td>
+                    <select class="phone1" name="phone[]">
+                      <option value="02">02</option>
+                      <option value="031">031</option>
+                      <option value="032">032</option>
+                      <option value="033">033</option>
+                      <option value="041">041</option>
+                      <option value="042">042</option>
+                      <option value="043">043</option>
+                      <option value="044">044</option>
+                      <option value="051">051</option>
+                      <option value="052">052</option>
+                      <option value="053">053</option>
+                      <option value="054">054</option>
+                      <option value="055">055</option>
+                      <option value="061">061</option>
+                      <option value="062">062</option>
+                      <option value="063">063</option>
+                      <option value="064">064</option>
+                      <option value="0502">0502</option>
+                      <option value="0503">0503</option>
+                      <option value="0504">0504</option>
+                      <option value="0505">0505</option>
+                      <option value="0506">0506</option>
+                      <option value="0507">0507</option>
+                      <option value="070">070</option>
+                      <option value="010">010</option>
+                      <option value="011">011</option>
+                      <option value="016">016</option>
+                      <option value="017">017</option>
+                      <option value="018">018</option>
+                      <option value="019">019</option>
+                      <option value="0508">0508</option>
+                    </select>
+                    <input class="phone2" name="phone[]" type="text"/>
+                    <input class="phone3" name="phone[]" type="text"/>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">휴대전화</th>
+                    <td>
+                      <select class="mobile1" name="mobile[]">
+                        <option value="010">010</option>
+                        <option value="011">011</option>
+                        <option value="016">016</option>
+                        <option value="017">017</option>
+                        <option value="018">018</option>
+                        <option value="019">019</option>
+                      </select>-
+                      <input class="mobile2" name="mobile[]" type="text"/>-
+                      <input class="mobile3" name="mobile[]" type="text"/>
+                    </td>
+                </tr>
+                <tr>
+                  <th scope="row">SMS 수신여부
+                    <img src="img/ico_required.gif" alt="필수">
+                  </th>
+                  <td><input class="is_sms" name="is_sms" value="T" type="checkbox"/>
+                    <label for=is_sms>동의함</label>
+                    <p>해당사이트에서 제공하는 유익한 이벤트 소식을 SMS로 받으실 수 있습니다.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">이메일
+                    <img src="img/ico_required.gif" alt="필수">
+                  </th>
+                  <td><input class="email1" name="email1" type="text"/>
+                    <span class="emailMsg"></span>
+                  </td>
+                </tr>
+                <tr class="displaynone">
+                  <th scope="row">이메일 수신여부
+                    <img src="img/ico_required.gif" alt="필수"/>
+                  </th>
+                  <td><input name="is_news_mail" class="ec-base-chk" value="T" type="checkbox"/>
+                    <label for=is_news_mail0>동의함</label>
+                    <p>해당사이트에서 제공하는 유익한 이벤트 소식을 이메일로 받으실 수 있습니다.</p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+        </tbody>
+        <div class="bottom-button">
+          <button type="submit" class="join">회원가입</button>
+          <button type="submit" class="cancel">회원가입 취소</button>
+        </div>
+
+    </div>
+  </section>
+</body>
+</html>

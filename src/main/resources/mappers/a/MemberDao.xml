@@ -6,4 +6,5 @@
         SELECT  * FROM public.tb_cmmn_bbs
     </select>
 
+
 </mapper>

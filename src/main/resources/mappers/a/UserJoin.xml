@@ -5,29 +5,48 @@
     <select id="checkDuplicationUserId" parameterType="UserJoinVo" resultType="int">
         SELECT COUNT(1)
         FROM PUBLIC.TB_USER_INFO
-        WHERE REPLACE(USER_ID,' ','') = REPLACE(#{userId}, ' ', '')
+        WHERE REPLACE(USER_ID,' ','') = REPLACE(#{userId},' ', '')
     </select>
-
-
-    <!-- ID중복체크2 -->
-    <select id="userJoinSave" parameterType="UserJoinVo" resultType="HashMap">
-        /*JoinDao.findUserSn*/
-        SELECT T1.AL_USER_SN
-        FROM TB_USER_INFO T1
-        WHERE T1.USE_YN = 'Y'
-          AND T1.CI = #{CI}
-        ORDER BY T1.USER_SN
-            LIMIT 1
-    </select>
-    <!-- ID중복체크2 -->
+    <!-- ID중복체크 -->
     <select id="findUserSn" parameterType="UserJoinVo" resultType="HashMap">
         /*JoinDao.findUserSn*/
         SELECT T1.AL_USER_SN
         FROM TB_USER_INFO T1
         WHERE T1.USE_YN = 'Y'
-          AND T1.CI = #{CI}
         ORDER BY T1.USER_SN
         LIMIT 1
     </select>
-
+    <!-- User 그룹명 유저순번 생성 -->
+    <select id="userSelect" parameterType="UserJoinVo" resultType="UserJoinVo">
+        /*JoinDao.findUserSn*/
+        SELECT CONCAT(GROUP_CD_NM,SN_NO) AS USER_SN
+        FROM (SELECT TO_CHAR(NEXTVAL('TB_CMMN_AUTHOR_USER_SEQ'), '00000000FM') AS SN_NO) AS A , TB_CMMN_CODE_GROUP
+        WHERE GROUP_CD_NM = #{groupNm}
+    </select>
+    <insert id="userInsert">
+        INSERT INTO TB_USER_INFO
+        (USER_SN
+            , USER_ID
+            , USER_PWD
+            , USER_NM
+            , USER_BIRTH
+            , USER_MPNO
+            , REAL_ADDR
+            , REAL_ADDR_DTL
+            , ADDR_UPDT_DT
+            , WITHDRAWAL_DT
+        )
+        VALUES
+        (#{userSn}
+        , #{userId}
+        , #{userPwd}
+        , #{userNm}
+        , #{userBirth}
+        , #{userMpno}
+        , #{realAddr}
+        , #{realAddrDtl}
+        , now()
+        , now()
+        )
+    </insert>
 </mapper>

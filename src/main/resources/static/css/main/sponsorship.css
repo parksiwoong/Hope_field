@@ -1,0 +1,298 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul{list-style: none;}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+body{
+  font-family: 'Pretendard', 'Chronicle Display';
+  color: #333;
+}
+
+.clearfix::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+
+/*header*/
+header{
+  width: 100%;
+  height: 220px;
+  background-color: #f5f5f5;
+  position: relative;
+  margin: auto;
+  z-index: 9;
+}
+
+header h1{
+  font-size: 60px;
+  font-weight: bold;
+  position: absolute;
+  top: 20%;
+  left: 15%;
+}
+
+.top-menu{
+  position: absolute;
+  top: 80px;
+  right: 12%;
+}
+
+.top-menu li{
+  float: left;
+  margin-right: 20px;
+  font-size: 15px;
+}
+
+/*gnb*/
+.gnb{
+  float: right;
+  margin-top: 10%;
+  margin-right: 30%;
+  line-height: 20px;
+}
+
+.gnb > li{
+  float: left;
+  width: 120px;
+  text-align: center;
+  position: relative;
+}
+
+.gnb > li > a{
+  padding: 5px 0px;
+  transition: all 0.5s;
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.gnb > li a:hover{
+  color: #1465a3;
+  transition: ease 0.5s;
+}
+
+.sub{
+  position: absolute;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  display: none;
+  background-color: #f5f5f5;
+}
+
+.sub > li > a{
+  height: 35px;
+  line-height: 35px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  color: #333;
+}
+
+.sub > li:hover{
+  background-color: #fff;
+}
+/*header END*/
+
+
+.container{
+  width: 100%;
+  height: 2000px;
+  margin: 80px auto;
+}
+
+/*step-box*/
+.container > .step-box{
+  width: 780px;
+  height: 200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.step-box > .active label{
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: #5b627c;
+  display: inline-block;
+}
+
+.step-box label{
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid #5b627c;
+  background-color: transparent;
+  display: inline-block;
+  margin: 10px 0px;
+}
+
+.step-box span{
+  font-size: 50px;
+}
+/*step-box END*/
+
+
+/*toggle-box*/
+.toggle-box{
+  width: 1180px;
+  height: 900px;
+  margin:auto;
+  border: 3px solid #5b627c;
+  text-align: center;
+}
+
+h2{
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin: 60px 0px 20px;
+  border-bottom: 3px solid #d4d8d9;
+  width: 150px;
+  margin: 30px auto;
+  padding: 10px 0px;
+  letter-spacing: 3px;
+}
+
+.toggle-box button{
+  width: 272px;
+  height: 56px;
+  border: 1px solid #5b627c;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.toggle-box button > span{
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+
+.toggle-box button:hover{
+  background-color: #5b627c;
+  transition: all 1s ease;
+  color: #fff;
+}
+
+.FormGroup-1{
+  padding: 40px 0px;
+  margin: auto;
+}
+
+.FormGroup-1 > .supportIndex{
+  width: 545px;
+  height: 60px;
+  border: 1px solid #5b627c;
+  background-color: transparent;
+  font-size: 16px;
+}
+
+
+/*FormGroup-2*/
+/*ridio-box1*/
+.InputRadio{ /*공통*/
+  width: 1180px;
+  margin: auto;
+  table-layout: fixed;
+}
+
+.FormGroup-2 label{
+  line-height: 50px;
+}
+
+.radio-box1{
+  display: table;
+  width: 540px;
+  table-layout: fixed;
+  margin: auto;
+}
+
+.radio-box1 > label{
+  width: 180px;
+  height: 50px;
+  display : table-cell;
+  border: 1px solid #5b627c;
+  border-bottom: none;
+}
+
+label:hover{ /*공통*/
+  background: #5b627c;
+  color: #fff;
+  transition: all 1s ease;
+}
+
+.radio-box1 > label:nth-child(2){
+  border-left: none;
+  border-right: none;
+}
+
+.InputRadio_RadioTabInput{
+  display: block;
+  z-index: -1;
+  overflow: hidden;
+  color: transparent;
+  border: 0px;
+  padding: 0px;
+  opacity: 0;
+  background: none;
+  position: absolute; 
+  margin: 0px;
+  cursor: pointer;
+}
+
+
+/*ridio-box2*/
+.ridio-box2{
+  display: table;
+  width: 540px;
+  table-layout: fixed;
+  margin: auto;
+}
+
+.ridio-box2 > label{
+  width: 180px;
+  height: 50px;
+  display : table-cell;
+  border: 1px solid #5b627c;
+}
+
+.ridio-box2 > label:nth-child(2){
+  border-left: none;
+  border-right: none;
+}
+
+/* .radio-box2 > input{
+  width: 180px;
+  height: 50px;
+  display : table-cell;
+  border: 2px solid #5b627c;
+  border-left: none;
+} */
+
+.number{
+  display: block;
+  width: 180px;
+  height: 50px;
+  padding: 0px 16px;
+  background: rgb(255, 255, 255);
+  border: 1px solid #aaaaaa;
+  font-size: 16px;
+}
+
+/*FormTotal*/
+.TotalButton{
+  margin-top: 30px;
+}

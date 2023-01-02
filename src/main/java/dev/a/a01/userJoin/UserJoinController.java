@@ -29,7 +29,7 @@ import java.util.Objects;
 public class UserJoinController {
 
     @Resource(name = "userJoinService")
-    UserJoinServiceImpl service;
+    UserJoinService service;
 
     @RequestMapping("/memberGetInsert")
     public String _userGetJoin(){
@@ -40,6 +40,7 @@ public class UserJoinController {
     public String _userGetJoin_2(){
         return "/dev/a/a01/userJoin_2";
     }
+
 
     /** 아이디 중복체크 */
     @ResponseBody
@@ -56,11 +57,16 @@ public class UserJoinController {
     @RequestMapping("/memberSave")
     public ModelAndView _userJoinSave(HttpServletRequest request, RedirectAttributes redirct, UserJoinVo vo, HttpSession session) throws Exception {
         int resultCnt = 1;
-
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("/dev/a/a01/memberInsert");
 
-        session.setAttribute("alUserSn",service.userJoinSave(vo));
+        System.out.println("jade - vo: " + vo);
+        System.out.println("jade - request: " + request);
+        //로그인 저장
+
+     //   mav.setViewName("/dev/a/a01/memberInsert");
+        mav.setViewName("/main/index");
+
+        session.setAttribute("alUserSn",service.userInsert(vo));
         mav.addObject(session);
         redirct.addAttribute("result", resultCnt);
         return mav;

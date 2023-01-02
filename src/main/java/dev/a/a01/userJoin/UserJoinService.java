@@ -6,4 +6,6 @@ public interface UserJoinService {
     int checkDuplicationUserId(UserJoinVo vo)throws SQLException;
 
     int userJoinSave (UserJoinVo vo)throws  SQLException;
+
+    String userInsert(UserJoinVo vo) throws SQLException;
 }

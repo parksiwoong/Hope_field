@@ -24,6 +24,16 @@ public class MemberController {
     MemberServiceImpl service;
 
     /**
+     * new로그인
+     * @param map
+     * @param vo
+     * */
+    @RequestMapping("/userLogin")
+    public String _memberLogin(){
+        return "/dev/a/a01/login";
+    }
+
+    /**
      * 로그인
      * @param map
      * @param vo

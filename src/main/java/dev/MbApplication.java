@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan(basePackages = "dev.**.**.**.mappers , dev.**.**.**.**.mappers") //java쪽 주소 맵핑 (dao)
 public class MbApplication {
     public static void main(String[] args) {
+        System.setProperty("server.servlet.context-path", "/hopePield");
         SpringApplication.run(MbApplication.class, args);
     }
 }

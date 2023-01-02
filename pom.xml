@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>dev.yhp.study</groupId>
-    <artifactId>mb</artifactId>
+    <artifactId>hopeField</artifactId>
     <version>21.1.1.0</version>
     <packaging>war</packaging>
-    <name>mb</name>
+    <name>hopeField</name>
     <description>Demo project for Spring Boot</description>
     <!-- <properties>
          <java.version>1.8</java.version>
@@ -90,6 +90,27 @@
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.1.4</version>
+        </dependency>
+        <!-- 비밀번호해싱 https://mvnrepository.com/artifact/at.favre.lib/bcrypt -->
+        <dependency>
+            <groupId>at.favre.lib</groupId>
+            <artifactId>bcrypt</artifactId>
+            <version>0.9.0</version>
+        </dependency>
+            <!-- ... other dependency elements ... -->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-starter-security</artifactId>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.security</groupId>-->
+<!--                <artifactId>spring-security-test</artifactId>-->
+<!--                <scope>test</scope>-->
+<!--            </dependency>-->
+        <!-- -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
         </dependency>
         <!-- JSTL -->
         <dependency>
